@@ -48,12 +48,16 @@ namespace Trinity
             bool stopped() { return _impl.stopped(); }
             void stop() { _impl.stop(); }
 
+
+
 #if BOOST_VERSION >= 106600
             void restart() { _impl.restart(); }
+            void restart() { _impl.reset(); }
 
             boost::asio::io_context::executor_type get_executor() noexcept { return _impl.get_executor(); }
 #else
             void restart() { _impl.reset(); }
+            void reset() { _impl.reset(); }
 #endif
 
         private:
