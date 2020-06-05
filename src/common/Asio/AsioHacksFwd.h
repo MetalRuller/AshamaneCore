@@ -57,14 +57,14 @@ namespace boost
             typedef basic_resolver<tcp, executor> tcp_resolver;
         }
 #elif BOOST_VERSION >= 106700
-        class executor;
+        //class executor;
 
         namespace ip
         {
-            template <typename InternetProtocol, typename Executor>
+            template <typename InternetProtocol>
             class basic_resolver;
 
-            typedef basic_resolver<tcp, executor> tcp_resolver;
+            typedef basic_resolver<tcp> tcp_resolver;
         }
 #elif BOOST_VERSION >= 106600
         namespace ip
