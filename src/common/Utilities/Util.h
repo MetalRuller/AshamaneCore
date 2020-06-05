@@ -64,6 +64,28 @@ TC_COMMON_API uint32 TimeStringToSecs(const std::string& timestring);
 TC_COMMON_API std::string TimeToTimestampStr(time_t t);
 
 // Percentage calculation
+
+inline void ApplyPercentModFloatVar(float& var, float val, bool apply)
+{
+    if (val == -100.0f)     // prevent set var to zero
+        val = -99.99f;
+    var *= (apply ? (100.0f + val) / 100.0f : 100.0f / (100.0f + val));
+}
+
+// Percentage calculation
+template <class T, class U>
+inline T CalculatePct(T base, U pct)
+{
+    return T(base * static_cast<float>(pct) / 100.0f);
+}
+
+template <class T>
+inline float GetPctOf(T value, T max)
+{
+    ASSERT(max && value <= max);
+    return float(static_cast<float>(value) / static_cast<float>(max) * 100.0f);
+}
+
 template <class T, class U>
 inline T CalculatePct(T base, U pct)
 {
