@@ -1,5 +1,5 @@
 /*
- * This file is part of the TrinityCore Project. See AUTHORS file for Copyright information
+ * Copyright (C) 2008-2019 TrinityCore <https://www.trinitycore.org/>
  *
  * This program is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the
@@ -41,24 +41,18 @@ namespace Trinity
             IoContext() : _impl() { }
             explicit IoContext(int concurrency_hint) : _impl(concurrency_hint) { }
 
-            operator IoContextBaseNamespace::IoContextBase&() { return _impl; }
-            operator IoContextBaseNamespace::IoContextBase const&() const { return _impl; }
+            operator IoContextBaseNamespace::IoContextBase& () { return _impl; }
+            operator IoContextBaseNamespace::IoContextBase const& () const { return _impl; }
 
             std::size_t run() { return _impl.run(); }
             bool stopped() { return _impl.stopped(); }
             void stop() { _impl.stop(); }
-
-
-
-#if BOOST_VERSION >= 106600
             void restart() { _impl.restart(); }
-            void restart() { _impl.reset(); }
+            void reset() { _impl.restart(); }
 
+//#if BOOST_VERSION >= 106600
             boost::asio::io_context::executor_type get_executor() noexcept { return _impl.get_executor(); }
-#else
-            void restart() { _impl.reset(); }
-            void reset() { _impl.reset(); }
-#endif
+//#endif
 
         private:
             IoContextBaseNamespace::IoContextBase _impl;
@@ -67,21 +61,21 @@ namespace Trinity
         template<typename T>
         inline decltype(auto) post(IoContextBaseNamespace::IoContextBase& ioContext, T&& t)
         {
-#if BOOST_VERSION >= 106600
+//#if BOOST_VERSION >= 106600
             return boost::asio::post(ioContext, std::forward<T>(t));
-#else
+/*#else
             return ioContext.post(std::forward<T>(t));
-#endif
+#endif*/
         }
 
         template<typename T>
         inline decltype(auto) get_io_context(T&& ioObject)
         {
-#if BOOST_VERSION >= 106600
+//#if BOOST_VERSION >= 106600
             return ioObject.get_executor().context();
-#else
+/*#else
             return ioObject.get_io_service();
-#endif
+#endif*/
         }
     }
 }

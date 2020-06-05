@@ -1,5 +1,5 @@
 /*
- * This file is part of the TrinityCore Project. See AUTHORS file for Copyright information
+ * Copyright (C) 2008-2019 TrinityCore <https://www.trinitycore.org/>
  *
  * This program is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the
@@ -20,9 +20,9 @@
 
 #include <boost/version.hpp>
 
-/**
-  Collection of forward declarations to improve compile time
- */
+ /**
+   Collection of forward declarations to improve compile time
+  */
 namespace boost
 {
     namespace posix_time
@@ -46,7 +46,7 @@ namespace boost
 
             typedef basic_endpoint<tcp> tcp_endpoint;
         }
-#if BOOST_VERSION >= 107000
+//#if BOOST_VERSION >= 107000
         class executor;
 
         namespace ip
@@ -56,7 +56,7 @@ namespace boost
 
             typedef basic_resolver<tcp, executor> tcp_resolver;
         }
-#elif BOOST_VERSION >= 106600
+/*#elif BOOST_VERSION >= 106600
         namespace ip
         {
             template <typename InternetProtocol>
@@ -75,7 +75,7 @@ namespace boost
 
             typedef basic_resolver<tcp, resolver_service<tcp>> tcp_resolver;
         }
-#endif
+#endif*/
     }
 }
 
