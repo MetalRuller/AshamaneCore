@@ -50,9 +50,9 @@ namespace Trinity
             void restart() { _impl.restart(); }
             void reset() { _impl.restart(); }
 
-//#if BOOST_VERSION >= 106600
+#if BOOST_VERSION >= 106600
             boost::asio::io_context::executor_type get_executor() noexcept { return _impl.get_executor(); }
-//#endif
+#endif
 
         private:
             IoContextBaseNamespace::IoContextBase _impl;
@@ -61,21 +61,21 @@ namespace Trinity
         template<typename T>
         inline decltype(auto) post(IoContextBaseNamespace::IoContextBase& ioContext, T&& t)
         {
-//#if BOOST_VERSION >= 106600
+#if BOOST_VERSION >= 106600
             return boost::asio::post(ioContext, std::forward<T>(t));
-/*#else
+#else
             return ioContext.post(std::forward<T>(t));
-#endif*/
+#endif
         }
 
         template<typename T>
         inline decltype(auto) get_io_context(T&& ioObject)
         {
-//#if BOOST_VERSION >= 106600
+#if BOOST_VERSION >= 106600
             return ioObject.get_executor().context();
-/*#else
+#else
             return ioObject.get_io_service();
-#endif*/
+#endif
         }
     }
 }
