@@ -18,7 +18,10 @@ EndScriptData */
 #include "PhasingHandler.h"
 #include "Creature.h"
 #include "World.h"
-//#include <Windows.h>
+
+#if PLATFORM == PLATFORM_WINDOWS
+    #include <Windows.h>
+#endif
 class CommadExportHelper
 {
     //friend class ObjectMgr;
