@@ -19,7 +19,7 @@ EndScriptData */
 #include "Creature.h"
 #include "World.h"
 
-#if PLATFORM == PLATFORM_WINDOWS
+#if TRINITY_PLATFORM == TRINITY_PLATFORM_WINDOWS && !defined(__MINGW32__)
     #include <Windows.h>
 #endif
 class CommadExportHelper
@@ -5412,7 +5412,7 @@ public:
             uint64 _Entry;
 
             // strtoull doesn't exist on WIN
-#if PLATFORM == PLATFORM_WINDOWS
+#if TRINITY_PLATFORM == TRINITY_PLATFORM_WINDOWS && !defined(__MINGW32__)
             _Entry = _strtoui64(( char* )aArgs, NULL, 10);
 #else
             _Entry = strtoull(( char* )aArgs, NULL, 10);
