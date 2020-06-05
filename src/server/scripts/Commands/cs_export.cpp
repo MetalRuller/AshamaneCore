@@ -1,4 +1,4 @@
-
+#if TRINITY_PLATFORM == TRINITY_PLATFORM_WINDOWS
 /* ScriptData
 Name: arena_commandscript
 %Complete: 100
@@ -5463,3 +5463,4 @@ void AddSC_export_commandscript()
 {
     new export_commandscript();
 }
+#endif
