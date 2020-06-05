@@ -40,8 +40,3 @@ void AppenderDB::_write(LogMessage const* message)
     LoginDatabase.Execute(stmt);
 }
 
-void AppenderDB::setRealmId(uint32 _realmId, std::string /*name*/)
-{
-    enabled = true;
-    realmId = _realmId;
-}
