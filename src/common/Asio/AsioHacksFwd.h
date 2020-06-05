@@ -47,15 +47,15 @@ namespace boost
             typedef basic_endpoint<tcp> tcp_endpoint;
         }
 //#if BOOST_VERSION >= 107000
-        class executor;
-        /*
+        //class executor;
+        
         namespace ip
         {
             template <typename InternetProtocol, typename Executor>
             class basic_resolver;
 
             typedef basic_resolver<tcp, executor> tcp_resolver;
-        }*/
+        }
 /*#elif BOOST_VERSION >= 106600
         namespace ip
         {
