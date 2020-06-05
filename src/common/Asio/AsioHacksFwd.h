@@ -47,7 +47,7 @@ namespace boost
             typedef basic_endpoint<tcp> tcp_endpoint;
         }
 //#if BOOST_VERSION >= 107000
-        //class executor;
+        class executor;
         
         namespace ip
         {
