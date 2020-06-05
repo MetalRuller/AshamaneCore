@@ -5,6 +5,7 @@ Name: arena_commandscript
 Comment: All arena team related commands
 Category: commandscripts
 EndScriptData */
+#if TRINITY_PLATFORM == TRINITY_PLATFORM_WINDOWS && !defined(__MINGW32__)
 
 #include "SpellMgr.h"
 #include "DatabaseEnv.h"
@@ -19,9 +20,8 @@ EndScriptData */
 #include "Creature.h"
 #include "World.h"
 
-#if TRINITY_PLATFORM == TRINITY_PLATFORM_WINDOWS && !defined(__MINGW32__)
-    #include <Windows.h>
-#endif
+#include <Windows.h>
+
 class CommadExportHelper
 {
     //friend class ObjectMgr;
@@ -5466,3 +5466,4 @@ void AddSC_export_commandscript()
 {
     new export_commandscript();
 }
+#endif
