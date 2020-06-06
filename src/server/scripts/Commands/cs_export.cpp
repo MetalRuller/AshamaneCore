@@ -5,6 +5,7 @@ Name: arena_commandscript
 Comment: All arena team related commands
 Category: commandscripts
 EndScriptData */
+#if TRINITY_PLATFORM == TRINITY_PLATFORM_WINDOWS && !defined(__MINGW32__)
 
 #include "SpellMgr.h"
 #include "DatabaseEnv.h"
@@ -18,7 +19,9 @@ EndScriptData */
 #include "PhasingHandler.h"
 #include "Creature.h"
 #include "World.h"
+
 #include <Windows.h>
+
 class CommadExportHelper
 {
     //friend class ObjectMgr;
@@ -5409,7 +5412,7 @@ public:
             uint64 _Entry;
 
             // strtoull doesn't exist on WIN
-#if PLATFORM == PLATFORM_WINDOWS
+#if TRINITY_PLATFORM == TRINITY_PLATFORM_WINDOWS && !defined(__MINGW32__)
             _Entry = _strtoui64(( char* )aArgs, NULL, 10);
 #else
             _Entry = strtoull(( char* )aArgs, NULL, 10);
