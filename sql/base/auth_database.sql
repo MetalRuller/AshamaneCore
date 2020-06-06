@@ -2083,7 +2083,7 @@ INSERT INTO `rbac_permissions` VALUES
 (853,'Command: .reload conversation_template'),
 (854,'Command: .debug conversation'),
 (868,'Command: modify power'),
-(869,'Command: debug send playerchoice');
+(869,'Command: debug send playerchoice'),
 (872,'Command: server debug');
 /*!40000 ALTER TABLE `rbac_permissions` ENABLE KEYS */;
 UNLOCK TABLES;
