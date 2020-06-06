@@ -1,4 +1,4 @@
-#if TRINITY_PLATFORM == TRINITY_PLATFORM_WINDOWS
+
 /* ScriptData
 Name: arena_commandscript
 %Complete: 100
